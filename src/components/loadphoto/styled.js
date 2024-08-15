@@ -6,7 +6,7 @@ export const LoadPhotoContainer = styled.div`
   margin-top: 0.5rem;
   align-items: center;
   padding-left: 1rem;
-  gap: 24px;
+  gap: 10px;
 `;
 export const LoadText = styled.div`
   font-size: 14px;

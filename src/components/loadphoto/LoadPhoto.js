@@ -1,7 +1,6 @@
 import React ,{useState}from "react";
 import { LoadImage, LoadPhotoContainer, LoadText } from "./styled";
 import { MdOutlinePhotoLibrary } from "react-icons/md";
-import Picker from "../imagepicker/Picker.tsx";
 const LoadPhoto = ({textHeader,text}) => {
   const [showPicker, setShowPicker] = useState(false);
 
@@ -11,7 +10,7 @@ const LoadPhoto = ({textHeader,text}) => {
   return (
     <LoadPhotoContainer  onClick={handleLoadPhotoClick}>
       <LoadImage>
-        <Picker />
+        <MdOutlinePhotoLibrary/>
       </LoadImage>
       <LoadText>
        {textHeader}
