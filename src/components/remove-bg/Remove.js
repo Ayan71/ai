@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useLocation } from "react-router-dom";
 import Navbar from '../navbar/Navbar';
+import removebg from "../../assert/images/removebg.png"
 const Remove = () => {
     const location = useLocation();
     const image = location.state?.imageUrl;
@@ -8,6 +9,7 @@ const Remove = () => {
     const [bgremove, setBgremove] = useState(null);
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState(null);
+    const [convert,setConvert]=useState(false)
 
     const handleChanging = async () => {
         if (!image) {
@@ -44,6 +46,7 @@ const Remove = () => {
             const reader = new FileReader();
             reader.onload = () => {
                 setBgremove(reader.result);
+                setConvert(true)
                 console.log("Background removed successfully");
             };
             reader.readAsDataURL(blob);
@@ -54,13 +57,17 @@ const Remove = () => {
             setIsLoading(false);
         }
     }
-
+  const srcCheck=convert?bgremove:image;
     return (
         <div>
             <Navbar/>
             <div  style={{height:"100svh",width:"100vw",display:"flex",justifyContent:"center",alignItems:"center",flexDirection:"column",gap:"40px"}}>
-             <img src={bgremove} alt="Selected" style={{height:"300px"}}/>
-             <button style={{height:"30px",backgroundColor:"rgb(59 130 246 / .5)",border:"none",color:"white"}} onClick={handleChanging}>Remove Background</button>
+             <img src={srcCheck} alt="Selected" style={{height:"300px"}}/>
+             <button style={{height:"30px",backgroundColor:"rgb(59 130 246 / .5)",border:"none",color:"white"}} onClick={handleChanging}>
+             {isLoading?"...processing":"Remove Background"}
+             <img src={removebg}  style={{height:"291px",width:"287px",position:"absolute",top:"30",left:"44px",top:"32%",zIndex:"-1"}}/>
+             
+             </button>
              </div>
         </div>
     )

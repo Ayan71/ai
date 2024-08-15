@@ -9,8 +9,6 @@ function App() {
       <Routes>
         <Route path="/" element={<Front />}></Route>
         <Route path="/remove-bg" element={<Remove />}></Route>
-        <Route path="/remove-bga" element={<Navbar />}></Route>
-
       </Routes>
     </div>
   );
