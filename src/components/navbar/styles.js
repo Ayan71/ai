@@ -5,7 +5,6 @@ export const FrontContainer = styled.div`
   width: 100%;
   height: 3.5rem;
   color: white;
-  
 `;
 export const BelowContainer=styled.div`
 `
@@ -13,15 +12,18 @@ export const NarbarContainer = styled.div`
   display: flex;
   justify-content: space-between;
   padding: 1rem 1rem;
+  background-color: #232b2b;
 `;
 export const NavbarText = styled.div`
   font-size: 18px;
   font-weight: 500;
+  color: white;
 `;
 
 export const NavbarIcon = styled.div`
   display: flex;
   gap: 0.8rem;
+  color:white
 `;
 export const ShareIcon = styled.div``;
 export const OptionIcon = styled.div``;

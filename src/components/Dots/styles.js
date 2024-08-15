@@ -7,12 +7,14 @@ export const VerticalContainer = styled.div`
   position: absolute;
   top: 40px;
   right: 10px;
+
 `;
 export const VerticalOptions = styled.div`
   display: flex;
   flex-direction: column;
   gap: 0.8rem;
-  font-size: 14px;
+  font-size: 14px;color: #000;
+  color: white;
 `;
 export const FirstOption = styled.div``;
 export const SecondOption = styled.div``;

@@ -8,6 +8,7 @@ import LoadPhoto from "../loadphoto/LoadPhoto.js";
 import { RWebShare } from "react-web-share";
 import Vertical from "../Dots/Vertical.js";
 import Acknowledgements from "../acknowledgements/Acknowledgements.js";
+import Navbar from "../navbar/Navbar.js";
 import {
   FrontContainer,
   NarbarContainer,
@@ -40,26 +41,7 @@ const Front = () => {
     <FrontContainer>
       {/* NabarContainer  Code*/}
       <BelowContainer>
-        <NarbarContainer>
-          <NavbarText>AI Background Eraser</NavbarText>
-          <NavbarIcon>
-            <RWebShare
-              data={{
-                text: "Edit Image and Remove Background",
-                url: "https://www.youtube.com/channel/UCF49DeNM7eS78VdbKZjh9WA",
-                title: "Ai Background Image",
-              }}
-            >
-              <ShareIcon>
-                {" "}
-                <CiShare2 />
-              </ShareIcon>
-            </RWebShare>
-            <OptionIcon>
-              <BsThreeDotsVertical onClick={handleShowPopup} />
-            </OptionIcon>
-          </NavbarIcon>
-        </NarbarContainer>
+        <Navbar/>
         {/* Problem Solving section */}
         <ProblemContainer>
           <ProblemRow>

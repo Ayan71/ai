@@ -1,24 +1,49 @@
-import React ,{useState}from "react";
+import React, { useState, useRef } from "react";
 import { LoadImage, LoadPhotoContainer, LoadText } from "./styled";
 import { MdOutlinePhotoLibrary } from "react-icons/md";
-const LoadPhoto = ({textHeader,text}) => {
-  const [showPicker, setShowPicker] = useState(false);
+ import { useNavigate } from "react-router-dom";
 
-  const handleLoadPhotoClick = () => {
-    setShowPicker(true);
+const LoadPhoto = ({ textHeader, text }) => {
+  const [selectedImage, setSelectedImage] = useState(null);
+
+  const [image, setImage] = useState(null);
+ const navigate = useNavigate();
+  const fileInputRef = useRef(null);
+  const handleImageChange = (e) => {
+    if (e.target.files && e.target.files[0]) {
+      const selectedFile = e.target.files[0];
+      setImage(selectedFile);
+      const imageUrl = URL.createObjectURL(selectedFile);
+
+      // Navigate to the new route with the image URL as state
+      navigate('/remove-bg', { state: { imageUrl } });
+    }
   };
+  const handleImageClick = () => {
+    fileInputRef.current.click();
+  };
+
   return (
-    <LoadPhotoContainer  onClick={handleLoadPhotoClick}>
-      <LoadImage>
-        <MdOutlinePhotoLibrary/>
-      </LoadImage>
-      <LoadText>
-       {textHeader}
-        <br />
-       {text}
+    <>
+      <LoadPhotoContainer onClick={handleImageClick}>
+        <input
+          type="file"
+          accept="image/*"
+          onChange={handleImageChange}
+          ref={fileInputRef}
+          style={{ display: "none" }}
+        />
+        <LoadImage>
+          <MdOutlinePhotoLibrary />
+        </LoadImage>
+        <LoadText>
+          {textHeader}
+          <br />
+          {text}
+        </LoadText>
+      </LoadPhotoContainer>
       
-      </LoadText>
-    </LoadPhotoContainer>
+    </>
   );
 };
 
